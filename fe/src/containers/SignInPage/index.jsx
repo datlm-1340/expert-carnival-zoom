@@ -1,13 +1,20 @@
-import React, { createRef, useEffect, useState } from 'react'
-import { signIn } from "requests/signInRequests"
-import { setToken } from "token"
+import React, { createRef, useEffect } from 'react'
+import { signIn } from "requests/userRequests"
+import { setToken, getToken } from "token"
 import { formData } from 'utils'
-import request from 'myAxios'
 import { useNavigate } from 'react-router-dom';
 
 const SignInPage = () => {
   const navigate = useNavigate();
   const ref = createRef()
+  const token = getToken()
+
+  useEffect(() => {
+    if (token) {
+      alert("you signed in!!")
+      navigate('/')
+    }
+  }, [])
 
   const submit = (e) => {
     e.preventDefault()
@@ -15,9 +22,8 @@ const SignInPage = () => {
     const params = { user: formData(ref.current) }
     signIn(params)
       .then(res => {
-        if (res.status) {
-          setToken(res.token)
-          console.log(res)
+        if (res.data.status && res.data.token) {
+          setToken(res.data.token)
           navigate('/')
         }
       })

@@ -7,10 +7,8 @@ const instance = axios.create({
 
 const assignToken = () => {
   const token = getToken()
-  console.log(typeof token)
   const headers = {}
   if (token) {
-    console.log(123)
     headers['Authorization'] = `Bearer ${token}`
   }
 

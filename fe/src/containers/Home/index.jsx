@@ -1,6 +1,10 @@
 const Home = () => {
   return <>
-    Home
+    <button>
+      <a href="">
+        Get code Zoom
+      </a>
+    </button>
   </>
 }
 
