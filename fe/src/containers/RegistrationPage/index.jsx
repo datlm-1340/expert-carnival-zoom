@@ -1,7 +1,7 @@
 import React, { createRef, useEffect } from 'react'
 import { signUp } from "requests/userRequests"
 import { formData } from 'utils'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { getToken } from "token"
 
 const RegistrationPage = () => {
@@ -30,6 +30,11 @@ const RegistrationPage = () => {
 
   return <>
     <h1>Sign Up</h1>
+
+    <nav>
+      <Link to="/sign_in">Sign In</Link>
+      <Link to="/sign_up">Sign Up</Link>
+    </nav>
 
     <form ref={ref}>
       <fieldset>

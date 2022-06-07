@@ -1,8 +1,8 @@
 import React, { createRef, useEffect } from 'react'
 import { signIn } from "requests/userRequests"
-import { setToken, getToken } from "token"
+import { setToken, getToken, setUser } from "token"
 import { formData } from 'utils'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ const SignInPage = () => {
       .then(res => {
         if (res.data.status && res.data.token) {
           setToken(res.data.token)
+          setUser(res.data.user)
           navigate('/')
         }
       })
@@ -34,6 +35,11 @@ const SignInPage = () => {
 
   return <>
     <h1>Sign In</h1>
+
+    <nav>
+      <Link to="/sign_in">Sign In</Link>
+      <Link to="/sign_up">Sign Up</Link>
+    </nav>
 
     <form ref={ref}>
       <fieldset>

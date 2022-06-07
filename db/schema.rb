@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_07_025044) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_065031) do
+  create_table "event_zooms", force: :cascade do |t|
+    t.string "metting_name"
+    t.string "metting_pw"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "jwt_denylists", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false
@@ -28,6 +38,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_025044) do
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "zoom_access_tokens", force: :cascade do |t|
+    t.integer "admin_id"
+    t.text "access_token"
+    t.text "refresh_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_zoom_access_tokens_on_admin_id"
   end
 
 end
