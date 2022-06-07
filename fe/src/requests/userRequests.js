@@ -7,3 +7,7 @@ export const signIn = (params) => {
 export const signUp = (params) => {
   return request("POST", "/users", params)
 }
+
+export const signOut = () => {
+  return request("DELETE", "/users/sign_out")
+}

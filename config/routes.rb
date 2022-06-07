@@ -6,12 +6,12 @@ Rails.application.routes.draw do
              }
 
   namespace :api do
-    get "/webhook", to: "zoom#webhook"
-    get "/request_access_token", to: "zoom#request_access_token"
-    get "/redirect", to: "zoom#redirect", as: :redirect
-    get "/code", to: "zoom#code"
     namespace :user do
       resources :event_zooms
+    end
+
+    scope :zoom do
+      get "/request_access_token", to: "zoom#request_access_token"
     end
   end
 end

@@ -15,7 +15,15 @@ class Api::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    render json: { status: true, token: current_token }, status: :ok
+    render json: {
+      status: true,
+      token: current_token,
+      user: {
+        email: resource.email,
+        role: resource.role,
+        zoom: resource.zoom_access_token.as_json(only: %i[access_token refresh_token])
+      }
+    }, status: :ok
   end
 
   def respond_to_on_destroy
