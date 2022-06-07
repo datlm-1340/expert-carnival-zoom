@@ -1,0 +1,2 @@
+class EventZoom < ApplicationRecord
+end
