@@ -1,0 +1,2 @@
+jwt:
+  secret: <%= Rails.application.secret_key_base %>
