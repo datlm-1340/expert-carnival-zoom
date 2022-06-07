@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     get "/request_access_token", to: "zoom#request_access_token"
     get "/redirect", to: "zoom#redirect", as: :redirect
     get "/code", to: "zoom#code"
+    namespace :user do
+      resources :event_zooms
+    end
   end
 end

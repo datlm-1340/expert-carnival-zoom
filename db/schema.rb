@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_07_025044) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_072429) do
+  create_table "event_zooms", force: :cascade do |t|
+    t.string "metting_name"
+    t.string "metting_pw"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "metting_id"
+  end
+
   create_table "jwt_denylists", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false

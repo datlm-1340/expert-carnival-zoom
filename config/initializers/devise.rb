@@ -302,7 +302,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.jwt do |jwt|
-    jwt.secret = "lotus"
+    jwt.secret = Settings.jwt.secret
   end
-
 end
