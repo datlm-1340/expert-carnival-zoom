@@ -1,41 +1,57 @@
-import { getUser, setUser } from 'token'
-import { oauthAuthorize } from 'requests/zoomRequests'
-import env from 'react-dotenv'
+import { oauthAuthorize, checkOauthAuthorize } from 'requests/zoomRequests'
+import { useEffect, useState } from 'react'
 
 const OAuth = () => {
-  const user = getUser()
+  const [code, setCode] = useState()
+  const [accessToken, setAccessToken] = useState()
   const ZOOM_OAUTH_URL = `https://zoom.us/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
 
-  const getZoomAccessToken = () => {
-    oauthAuthorize({ code: user.code }).then((res) => {
-      delete user.code
-      user.zoom = {
-        access_token: res.data.access_token,
-        refresh_token: res.data.refresh_token,
-      }
-
-      setUser(user)
+  useEffect(() => {
+    checkOauthAuthorize().then((res) => {
+      setAccessToken(res.data.access_token)
     })
+  }, [])
+
+  const getZoomAccessToken = () => {
+    oauthAuthorize({ code }).then((res) => {
+      setAccessToken(res.data.access_token)
+    })
+  }
+
+  const changeCode = (e) => {
+    setCode(e.target.value)
   }
 
   return (
     <>
       <fieldset>
         <legend>OAuth Information</legend>
-        <a
-          target="_blank"
-          href={ZOOM_OAUTH_URL}
-          rel="noreferrer"
-          className="primary-button"
-        >
-          Get code Zoom
-        </a>
+        {!accessToken && (
+          <p>
+            <strong>Click 'Get code Zoom' to Authorize</strong>
+          </p>
+        )}
+        {!accessToken && (
+          <a
+            target="_blank"
+            href={ZOOM_OAUTH_URL}
+            rel="noreferrer"
+            className="primary-button"
+          >
+            Get code Zoom
+          </a>
+        )}
         <button className="primary-button" onClick={getZoomAccessToken}>
-          Get Zoom Access Token
+          {!!accessToken ? 'Refresh Token' : 'Get Zoom Access Token'}
         </button>
-        {user.code && <p>Code: {user.code}</p>}
-        {user.zoom?.access_token && <p>Access Token: ok</p>}
-        {user.zoom?.refresh_token && <p>Refresh Token: ok</p>}
+        {!accessToken && (
+          <input
+            type="text"
+            name="code"
+            placeholder="code"
+            onChange={changeCode}
+          />
+        )}
       </fieldset>
     </>
   )

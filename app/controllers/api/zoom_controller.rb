@@ -1,6 +1,11 @@
 class Api::ZoomController < Api::BaseController
   include ZoomConcern
 
+  def get_access_token
+    zat = current_user.zoom_access_token || {}
+    return render json: zat
+  end
+
   def request_access_token
     if params[:code].present?
       response = authorization(params[:code])

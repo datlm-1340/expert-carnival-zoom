@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { createMeeting } from 'requests/zoomRequests'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const CreateMeeting = () => {
+  const navigate = useNavigate()
+
   const initialState = {
     userId: 'me',
     agenda: 'My Meeting',
@@ -27,7 +29,9 @@ const CreateMeeting = () => {
   }
 
   const submit = () => {
-    createMeeting(data)
+    createMeeting(data).then(() => {
+      navigate('/zoom/meetings')
+    })
   }
 
   return (

@@ -15,7 +15,7 @@ const assignToken = () => {
   return headers
 }
 
-const request = (method, url, params) => {
+const request = async (method, url, params) => {
   const body = {
     method,
     url,
@@ -26,13 +26,20 @@ const request = (method, url, params) => {
     },
   }
 
-  if (['POST', 'PUT', 'PATCH'].includes(method)) {
+  if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
     body.data = params
   } else {
     body.params = params
   }
 
-  return instance(body)
+  try {
+    const response = await instance(body)
+    return response
+  } catch (error) {
+    alert(error.response.status + ' ' + JSON.stringify(error.response.data))
+
+    return Promise.reject(error.response)
+  }
 }
 
 export default request

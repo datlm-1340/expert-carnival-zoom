@@ -8,9 +8,9 @@ const SignOutPage = () => {
   const n = useNavigate()
 
   useEffect(() => {
+    signOut()
     clearToken()
     clearUser()
-    signOut()
     n('/')
   }, [])
 

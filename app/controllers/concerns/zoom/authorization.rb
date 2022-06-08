@@ -18,7 +18,7 @@ class Zoom::Authorization
       form: {
         code: code,
         grant_type: "authorization_code",
-        redirect_uri: "https://demo-zoom.000webhostapp.com/"
+        redirect_uri: Settings.zoom.redirect_uri
       }
     )
 
