@@ -42,8 +42,6 @@ class Zoom::Meeting
       }
     )
 
-    binding.pry
-
     { status: response.status, body: JSON.parse(response.to_s).with_indifferent_access }
   end
 

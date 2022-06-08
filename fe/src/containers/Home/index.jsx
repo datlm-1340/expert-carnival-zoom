@@ -19,14 +19,14 @@ const Home = () => {
     </nav>
     <AdminBox>
       <OAuth />
-
-      <fieldset>
-        <legend>Meeting</legend>
-
-        <Link to="/zoom/create_meeting">Create Meeting</Link>
-        <Link to="/zoom/meetings">Meetings</Link>
-      </fieldset>
     </AdminBox>
+
+    <fieldset>
+      <legend>Meeting</legend>
+
+      <AdminBox><Link to="/zoom/create_meeting">Create Meeting</Link></AdminBox>
+      <Link to="/zoom/meetings">Meetings</Link>
+    </fieldset>
   </>
 }
 
