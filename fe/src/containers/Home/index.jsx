@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { getToken, getUser } from 'token'
 
@@ -20,6 +19,13 @@ const Home = () => {
     </nav>
     <AdminBox>
       <OAuth />
+
+      <fieldset>
+        <legend>Meeting</legend>
+
+        <Link to="/zoom/create_meeting">Create Meeting</Link>
+        <Link to="/zoom/meetings">Meetings</Link>
+      </fieldset>
     </AdminBox>
   </>
 }

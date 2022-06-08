@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     scope :zoom do
       get "/request_access_token", to: "zoom#request_access_token"
+      post "/meetings", to: "zoom#create_meetings"
     end
   end
 end

@@ -19,4 +19,9 @@ class Api::ZoomController < Api::BaseController
 
     render json: response[:body], status: response[:status].code
   end
+
+  def create_meetings
+    response = create_meeting
+    render json: response[:body], status: response[:status]
+  end
 end

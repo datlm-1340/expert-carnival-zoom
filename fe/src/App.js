@@ -9,6 +9,8 @@ import SignInPage from './containers/SignInPage'
 import RegistrationPage from './containers/RegistrationPage'
 import SignOutPage from './containers/SignOutPage'
 import ReceiveCode from './containers/ReceiveCode'
+import Meeting from './containers/Meeting'
+import CreateMeeting from './containers/Meeting/CreateMeeting'
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/sign_in" element={<SignInPage />}></Route>
         <Route path="/sign_up" element={<RegistrationPage />}></Route>
         <Route path="/sign_out" element={<SignOutPage />}></Route>
+        <Route path="/zoom/create_meeting" element={<CreateMeeting />}></Route>
+        <Route path="/zoom/meetings" element={<Meeting />}></Route>
       </Routes>
     </BrowserRouter>
   );

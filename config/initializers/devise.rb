@@ -303,5 +303,6 @@ Devise.setup do |config|
 
   config.jwt do |jwt|
     jwt.secret = Settings.jwt.secret
+    jwt.expiration_time = Settings.jwt.expiration_time
   end
 end

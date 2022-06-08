@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_07_072429) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_034534) do
+  create_table "admin_event_zooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_zoom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "event_zooms", force: :cascade do |t|
     t.string "metting_name"
     t.string "metting_pw"
@@ -20,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_072429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "metting_id"
+    t.text "start_url"
   end
 
   create_table "jwt_denylists", force: :cascade do |t|

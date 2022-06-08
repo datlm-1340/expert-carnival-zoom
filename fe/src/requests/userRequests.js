@@ -11,3 +11,7 @@ export const signUp = (params) => {
 export const signOut = () => {
   return request("DELETE", "/users/sign_out")
 }
+
+export const listMeetings = () => {
+  return request("GET", "/api/user/event_zooms")
+}
