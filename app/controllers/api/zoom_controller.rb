@@ -4,9 +4,9 @@ class Api::ZoomController < Api::BaseController
   def request_access_token
     if params[:code].present?
       response = authorization(params[:code])
-      
+
       if response[:status].success?
-        current_user.zoom_access_token.destroy
+        current_user.zoom_access_token&.destroy
 
         ZoomAccessToken.create access_token: response[:body]["access_token"],
           refresh_token: response[:body]["refresh_token"],

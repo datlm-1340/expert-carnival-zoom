@@ -18,7 +18,7 @@ class Zoom::Authorization
       form: {
         code: code,
         grant_type: "authorization_code",
-        redirect_uri: "https://c1df-1-52-125-159.ap.ngrok.io/code"
+        redirect_uri: "https://demo-zoom.000webhostapp.com/"
       }
     )
 
