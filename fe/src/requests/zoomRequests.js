@@ -1,9 +1,9 @@
-import request from "myAxios"
+import request from "myAxios";
 
 export const oauthAuthorize = (params) => {
-  return request("GET", "/api/zoom/request_access_token", params)
-}
+  return request("GET", "/api/zoom/request_access_token", params);
+};
 
 export const createMeeting = (params) => {
-  return request("POST", "/api/zoom/meetings", params)
-}
+  return request("POST", "/api/zoom/meetings", params);
+};

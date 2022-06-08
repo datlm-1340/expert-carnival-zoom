@@ -2,8 +2,8 @@ import axios from 'axios'
 import { getToken } from './token'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3001'
-});
+  baseURL: 'http://localhost:3001',
+})
 
 const assignToken = () => {
   const token = getToken()
@@ -22,8 +22,8 @@ const request = (method, url, params) => {
     headers: {
       Accept: 'application/json',
       'Content-type': 'application/json',
-      ...assignToken()
-    }
+      ...assignToken(),
+    },
   }
 
   if (['POST', 'PUT', 'PATCH'].includes(method)) {

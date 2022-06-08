@@ -32,3 +32,23 @@ table tbody tr td {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.primary-button {
+  background-color: #1762e4 !important;
+  padding: 5px 10px !important;
+  color: #ffffff;
+  font-weight: bold;
+  margin: 5px;
+  border-radius: 2px;
+}
+
+.primary-button:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #1762e4da !important;
+  transition: ease 0.2s;
+}
+
+#zmmtg-root {
+  display: none;
+}
