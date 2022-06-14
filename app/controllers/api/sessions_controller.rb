@@ -19,6 +19,7 @@ class Api::SessionsController < Devise::SessionsController
       status: true,
       token: current_token,
       user: {
+        id: resource.id,
         email: resource.email,
         role: resource.role,
         zoom: resource.zoom_access_token.as_json(only: %i[access_token refresh_token])

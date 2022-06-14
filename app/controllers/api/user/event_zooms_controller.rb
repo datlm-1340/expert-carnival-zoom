@@ -27,7 +27,8 @@ class Api::User::EventZoomsController < Api::BaseController
       url: event_zoom.url,
       signature: get_signature(event_zoom),
       user_email: current_user.email,
-      user_name: "[#{current_user.role}] #{current_user.email}"
+      user_name: "[#{current_user.role}] #{current_user.email}",
+      user_id: current_user.id
     }
 
     render_json(result, :ok)
