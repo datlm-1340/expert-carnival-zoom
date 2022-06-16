@@ -10,13 +10,13 @@ module ZoomConcern
   end
 
   def create_meeting access_token = nil
-    token = access_token || current_user.zoom_access_token.access_token
+    token = access_token || ZoomAccessToken.last.access_token
     response = create_meeting_zoom token, params
 
     if response[:status] == 401
       update_token
 
-      response = create_meeting_zoom current_user.zoom_access_token.access_token, params
+      response = create_meeting_zoom ZoomAccessToken.last.access_token, params
     end
 
     return response unless response[:status].success?
@@ -35,8 +35,8 @@ module ZoomConcern
   end
 
   def update_token
-    get_token = refresh_token(current_user.zoom_access_token.refresh_token)
-    zoom_access_token = current_user.zoom_access_token.update(
+    get_token = refresh_token(ZoomAccessToken.last.refresh_token)
+    zoom_access_token = ZoomAccessToken.last.update(
       access_token: get_token[:body]["access_token"],
       refresh_token: get_token[:body]["refresh_token"]
     )

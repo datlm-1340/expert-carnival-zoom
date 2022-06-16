@@ -5,7 +5,7 @@ class Api::User::EventZoomsController < Api::BaseController
   EVENT_ZOOM_METHODS = [:signature]
 
   def index
-    event_zooms = EventZoom.all.as_json(
+    event_zooms = EventZoom.all.order(created_at: :desc).as_json(
       only: EVENT_ZOOM_ATTRS,
       except: current_user.user? ? [:metting_pw, :start_url] : []
     )
@@ -27,7 +27,8 @@ class Api::User::EventZoomsController < Api::BaseController
       url: event_zoom.url,
       signature: get_signature(event_zoom),
       user_email: current_user.email,
-      user_name: "[#{current_user.role}] #{current_user.email}"
+      user_name: "[#{current_user.role}] #{current_user.email}",
+      user_id: current_user.id
     }
 
     render_json(result, :ok)

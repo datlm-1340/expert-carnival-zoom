@@ -3,4 +3,4 @@ zoom:
   client_secret: "X"
   sdk_key: "X"
   sdk_secret: "X"
-  redirect: "X"
+  redirect_uri: "X"
