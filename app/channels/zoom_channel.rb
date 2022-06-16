@@ -11,7 +11,7 @@ class ZoomChannel < ApplicationCable::Channel
 
     send_data
   end
-  
+
   def receive(data)
     @participants = participants
 
@@ -35,7 +35,7 @@ class ZoomChannel < ApplicationCable::Channel
   end
 
   def send_data
-    users = User.where(id: participants).as_json(only: %i[email role])
+    users = User.where(id: participants).as_json(only: %i[id email role])
 
     ActionCable.server.broadcast("zoom_#{params[:room]}", {participants: users})
   end
