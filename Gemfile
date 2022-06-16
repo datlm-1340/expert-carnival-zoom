@@ -12,6 +12,7 @@ gem "devise-jwt"
 gem "rack-cors"
 gem "config"
 gem "http"
+gem "redis"
 
 group :development, :test do
   gem "pry-rails"
