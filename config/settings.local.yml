@@ -1,0 +1,6 @@
+zoom:
+  client_id: <%= ENV['client_id'] %>
+  client_secret: <%= ENV['client_secret'] %>
+  sdk_key: <%= ENV['sdk_key'] %>
+  sdk_secret: <%= ENV['sdk_secret'] %>
+  redirect: <%= ENV['redirect'] %>
